@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mxb-coupon/mxb-coupon.iml" filepath="$PROJECT_DIR$/mxb-coupon/mxb-coupon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mxb-member/mxb-member.iml" filepath="$PROJECT_DIR$/mxb-member/mxb-member.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mxb-order/mxb-order.iml" filepath="$PROJECT_DIR$/mxb-order/mxb-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mxb-product/mxb-product.iml" filepath="$PROJECT_DIR$/mxb-product/mxb-product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mxb-ware/mxb-ware.iml" filepath="$PROJECT_DIR$/mxb-ware/mxb-ware.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/my_mall.iml" filepath="$PROJECT_DIR$/.idea/my_mall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/renren-fast/renren-fast.iml" filepath="$PROJECT_DIR$/renren-fast/renren-fast.iml" />
+    </modules>
+  </component>
+</project>
