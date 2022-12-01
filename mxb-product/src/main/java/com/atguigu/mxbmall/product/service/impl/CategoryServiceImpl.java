@@ -38,7 +38,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
     @Override
     public List<CategoryEntity> listWithTree() {
-        // 1. 查出所有分类
+        // 1. 查出所有分类 null:所有
         List<CategoryEntity> entities = baseMapper.selectList(null);
 
         // 2. 组装成父子的树形结构
@@ -103,10 +103,11 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         List<CategoryEntity> children = all.stream().filter(categoryEntity ->
              categoryEntity.getParentCid() == root.getCatId()
         ).map(categoryEntity -> {
-            // 1. 找到子菜单
+            // 映射方法 1. 找到子菜单
             categoryEntity.setChildren(getChildren(categoryEntity, all));
             return categoryEntity;
         }).sorted(Comparator.comparingInt(menu -> (menu.getSort() == null ? 0 : menu.getSort()))).collect(Collectors.toList());
+        // sorted 排序
         return children;
     }
 }
