@@ -10,7 +10,7 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.mxbmall.product.dao.SkuSaleAttrValueDao;
 import com.atguigu.mxbmall.product.entity.SkuSaleAttrValueEntity;
 import com.atguigu.mxbmall.product.service.SkuSaleAttrValueService;
-
+import io.renren.common.utils.Query;
 
 @Service("skuSaleAttrValueService")
 public class SkuSaleAttrValueServiceImpl extends ServiceImpl<SkuSaleAttrValueDao, SkuSaleAttrValueEntity> implements SkuSaleAttrValueService {

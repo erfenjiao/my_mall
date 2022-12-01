@@ -10,7 +10,7 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.mxbmall.product.dao.SpuCommentDao;
 import com.atguigu.mxbmall.product.entity.SpuCommentEntity;
 import com.atguigu.mxbmall.product.service.SpuCommentService;
-
+import io.renren.common.utils.Query;
 
 @Service("spuCommentService")
 public class SpuCommentServiceImpl extends ServiceImpl<SpuCommentDao, SpuCommentEntity> implements SpuCommentService {

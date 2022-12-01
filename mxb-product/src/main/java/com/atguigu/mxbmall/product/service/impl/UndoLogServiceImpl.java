@@ -10,7 +10,7 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.mxbmall.product.dao.UndoLogDao;
 import com.atguigu.mxbmall.product.entity.UndoLogEntity;
 import com.atguigu.mxbmall.product.service.UndoLogService;
-
+import io.renren.common.utils.Query;
 
 @Service("undoLogService")
 public class UndoLogServiceImpl extends ServiceImpl<UndoLogDao, UndoLogEntity> implements UndoLogService {

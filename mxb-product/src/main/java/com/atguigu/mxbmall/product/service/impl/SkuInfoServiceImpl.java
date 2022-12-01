@@ -10,7 +10,7 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.mxbmall.product.dao.SkuInfoDao;
 import com.atguigu.mxbmall.product.entity.SkuInfoEntity;
 import com.atguigu.mxbmall.product.service.SkuInfoService;
-
+import io.renren.common.utils.Query;
 
 @Service("skuInfoService")
 public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> implements SkuInfoService {

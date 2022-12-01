@@ -10,7 +10,7 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.mxbmall.product.dao.SpuInfoDao;
 import com.atguigu.mxbmall.product.entity.SpuInfoEntity;
 import com.atguigu.mxbmall.product.service.SpuInfoService;
-
+import io.renren.common.utils.Query;
 
 @Service("spuInfoService")
 public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> implements SpuInfoService {

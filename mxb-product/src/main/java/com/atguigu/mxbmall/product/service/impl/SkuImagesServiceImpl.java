@@ -10,7 +10,7 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.mxbmall.product.dao.SkuImagesDao;
 import com.atguigu.mxbmall.product.entity.SkuImagesEntity;
 import com.atguigu.mxbmall.product.service.SkuImagesService;
-
+import io.renren.common.utils.Query;
 
 @Service("skuImagesService")
 public class SkuImagesServiceImpl extends ServiceImpl<SkuImagesDao, SkuImagesEntity> implements SkuImagesService {

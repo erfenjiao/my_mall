@@ -10,7 +10,7 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.mxbmall.product.dao.CommentReplayDao;
 import com.atguigu.mxbmall.product.entity.CommentReplayEntity;
 import com.atguigu.mxbmall.product.service.CommentReplayService;
-
+import io.renren.common.utils.Query;
 
 @Service("commentReplayService")
 public class CommentReplayServiceImpl extends ServiceImpl<CommentReplayDao, CommentReplayEntity> implements CommentReplayService {
