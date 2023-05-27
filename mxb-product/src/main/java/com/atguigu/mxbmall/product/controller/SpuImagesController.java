@@ -3,7 +3,6 @@ package com.atguigu.mxbmall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,10 +22,9 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 20:54:29
+ * @date 2023-05-27 21:57:28
  */
 @RestController
-@RequestMapping("product/spuimages")
 public class SpuImagesController {
     @Autowired
     private SpuImagesService spuImagesService;
@@ -35,7 +33,6 @@ public class SpuImagesController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("product:spuimages:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = spuImagesService.queryPage(params);
 
@@ -47,7 +44,6 @@ public class SpuImagesController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("product:spuimages:info")
     public R info(@PathVariable("id") Long id){
 		SpuImagesEntity spuImages = spuImagesService.getById(id);
 
@@ -58,7 +54,6 @@ public class SpuImagesController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("product:spuimages:save")
     public R save(@RequestBody SpuImagesEntity spuImages){
 		spuImagesService.save(spuImages);
 
@@ -69,7 +64,6 @@ public class SpuImagesController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("product:spuimages:update")
     public R update(@RequestBody SpuImagesEntity spuImages){
 		spuImagesService.updateById(spuImages);
 
@@ -80,7 +74,6 @@ public class SpuImagesController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("product:spuimages:delete")
     public R delete(@RequestBody Long[] ids){
 		spuImagesService.removeByIds(Arrays.asList(ids));
 

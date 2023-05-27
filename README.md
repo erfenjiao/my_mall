@@ -56,3 +56,6 @@ java: 找不到符号
 		<version>2.6.6</version>
 		<relativePath ></relativePath>
 	</parent>
+
+### 4 pom.xml的依赖版本爆红
+右键本目录的Maven,Reload一下
