@@ -9,7 +9,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mxb-order" />
         <module name="mxb-member" />
-        <module name="mxbmall-common" />
         <module name="renren-fast" />
         <module name="mxb-product" />
         <module name="mxb-coupon" />
@@ -20,6 +19,7 @@
     <bytecodeTargetLevel>
       <module name="demo" target="17" />
       <module name="gulimall-product" target="17" />
+      <module name="mxbmall-common" target="18" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
