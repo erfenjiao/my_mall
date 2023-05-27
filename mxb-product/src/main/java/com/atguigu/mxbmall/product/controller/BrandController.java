@@ -32,7 +32,7 @@ public class BrandController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping("/listBrand")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = brandService.queryPage(params);
 
@@ -53,7 +53,7 @@ public class BrandController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping("/saveBrand")
     public R save(@RequestBody BrandEntity brand){
 		brandService.save(brand);
 
@@ -63,7 +63,7 @@ public class BrandController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping("/updateBrand")
     public R update(@RequestBody BrandEntity brand){
 		brandService.updateById(brand);
 
@@ -73,7 +73,7 @@ public class BrandController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteBrand")
     public R delete(@RequestBody Long[] brandIds){
 		brandService.removeByIds(Arrays.asList(brandIds));
 

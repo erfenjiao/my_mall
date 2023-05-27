@@ -32,7 +32,7 @@ public class SpuInfoController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping("/listSpuInfo")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = spuInfoService.queryPage(params);
 
@@ -43,7 +43,7 @@ public class SpuInfoController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @RequestMapping("/spuInfo/info/{id}")
     public R info(@PathVariable("id") Long id){
 		SpuInfoEntity spuInfo = spuInfoService.getById(id);
 
@@ -53,7 +53,7 @@ public class SpuInfoController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping("/saveSpuInfo")
     public R save(@RequestBody SpuInfoEntity spuInfo){
 		spuInfoService.save(spuInfo);
 
@@ -63,7 +63,7 @@ public class SpuInfoController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping("/updateSpuInfo")
     public R update(@RequestBody SpuInfoEntity spuInfo){
 		spuInfoService.updateById(spuInfo);
 
@@ -73,7 +73,7 @@ public class SpuInfoController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteSpuInfo")
     public R delete(@RequestBody Long[] ids){
 		spuInfoService.removeByIds(Arrays.asList(ids));
 

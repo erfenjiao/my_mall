@@ -32,7 +32,7 @@ public class CategoryController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping("/listCategory")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = categoryService.queryPage(params);
 
@@ -53,7 +53,7 @@ public class CategoryController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping("/saveCategory")
     public R save(@RequestBody CategoryEntity category){
 		categoryService.save(category);
 
@@ -63,7 +63,7 @@ public class CategoryController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping("/updateCategory")
     public R update(@RequestBody CategoryEntity category){
 		categoryService.updateById(category);
 
@@ -73,7 +73,7 @@ public class CategoryController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteCategory")
     public R delete(@RequestBody Long[] catIds){
 		categoryService.removeByIds(Arrays.asList(catIds));
 

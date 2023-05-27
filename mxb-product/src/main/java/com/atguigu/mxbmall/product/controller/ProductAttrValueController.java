@@ -32,7 +32,7 @@ public class ProductAttrValueController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping("/listProductAttrValue")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = productAttrValueService.queryPage(params);
 
@@ -43,7 +43,7 @@ public class ProductAttrValueController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @RequestMapping("/product/info/{id}")
     public R info(@PathVariable("id") Long id){
 		ProductAttrValueEntity productAttrValue = productAttrValueService.getById(id);
 
@@ -53,7 +53,7 @@ public class ProductAttrValueController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping("/saveProductAttrValue")
     public R save(@RequestBody ProductAttrValueEntity productAttrValue){
 		productAttrValueService.save(productAttrValue);
 
@@ -63,7 +63,7 @@ public class ProductAttrValueController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping("/updateProductAttrValue")
     public R update(@RequestBody ProductAttrValueEntity productAttrValue){
 		productAttrValueService.updateById(productAttrValue);
 
@@ -73,7 +73,7 @@ public class ProductAttrValueController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteProductAttrValue")
     public R delete(@RequestBody Long[] ids){
 		productAttrValueService.removeByIds(Arrays.asList(ids));
 

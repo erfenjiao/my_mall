@@ -32,7 +32,7 @@ public class AttrController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping("/listAttr")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrService.queryPage(params);
 
@@ -53,7 +53,7 @@ public class AttrController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping("/saveAttr")
     public R save(@RequestBody AttrEntity attr){
 		attrService.save(attr);
 
@@ -63,7 +63,7 @@ public class AttrController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping("/updateAttr")
     public R update(@RequestBody AttrEntity attr){
 		attrService.updateById(attr);
 
@@ -73,7 +73,7 @@ public class AttrController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteAttr")
     public R delete(@RequestBody Long[] attrIds){
 		attrService.removeByIds(Arrays.asList(attrIds));
 

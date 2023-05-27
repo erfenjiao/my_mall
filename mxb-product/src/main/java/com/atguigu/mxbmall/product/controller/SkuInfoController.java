@@ -32,7 +32,7 @@ public class SkuInfoController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping("/listSkuInfo")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = skuInfoService.queryPage(params);
 
@@ -43,7 +43,7 @@ public class SkuInfoController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{skuId}")
+    @RequestMapping("/skuInfo/info/{skuId}")
     public R info(@PathVariable("skuId") Long skuId){
 		SkuInfoEntity skuInfo = skuInfoService.getById(skuId);
 
@@ -53,7 +53,7 @@ public class SkuInfoController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping("/saveSkuInfo")
     public R save(@RequestBody SkuInfoEntity skuInfo){
 		skuInfoService.save(skuInfo);
 
@@ -63,7 +63,7 @@ public class SkuInfoController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping("/updateSkuInfo")
     public R update(@RequestBody SkuInfoEntity skuInfo){
 		skuInfoService.updateById(skuInfo);
 
@@ -73,7 +73,7 @@ public class SkuInfoController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteSkuInfo")
     public R delete(@RequestBody Long[] skuIds){
 		skuInfoService.removeByIds(Arrays.asList(skuIds));
 

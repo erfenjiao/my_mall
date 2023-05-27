@@ -32,7 +32,7 @@ public class SpuImagesController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping("/listSpuImages")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = spuImagesService.queryPage(params);
 
@@ -43,7 +43,7 @@ public class SpuImagesController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @RequestMapping("/spuImages/info/{id}")
     public R info(@PathVariable("id") Long id){
 		SpuImagesEntity spuImages = spuImagesService.getById(id);
 
@@ -53,7 +53,7 @@ public class SpuImagesController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping("/saveSpuImages")
     public R save(@RequestBody SpuImagesEntity spuImages){
 		spuImagesService.save(spuImages);
 
@@ -63,7 +63,7 @@ public class SpuImagesController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping("/updateSpuImages")
     public R update(@RequestBody SpuImagesEntity spuImages){
 		spuImagesService.updateById(spuImages);
 
@@ -73,7 +73,7 @@ public class SpuImagesController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteSpuImages")
     public R delete(@RequestBody Long[] ids){
 		spuImagesService.removeByIds(Arrays.asList(ids));
 
