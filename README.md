@@ -47,3 +47,12 @@ java: 找不到符号
    然后输入密码即可登录到新用户的账户中。
 
 请注意，为了提高系统的安全性，建议不要将密码直接存储在配置文件中，而是使用环境变量或其他加密措施来存储密码。
+
+### 3 ppom.xml的依赖问题
+问题：parent.relativePath' of POM io.renren:renren-fast:3.0.0 (/home/erfenjiao/my_mall/renren-fast/pom.xml) points at com.atguigu.mxbmall:mxb instead of org.springframework.boot:spring-boot-starter-parent, please verify your project structure
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.6</version>
+		<relativePath ></relativePath>
+	</parent>

@@ -15,6 +15,7 @@
         <module>mxb-product</module>
         <module>mxb-ware</module>
         <module>renren-fast</module>
+        <module>renren-generator</module>
     </modules>
 
 </project>
