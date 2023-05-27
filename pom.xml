@@ -14,6 +14,7 @@
         <module>mxb-order</module>
         <module>mxb-product</module>
         <module>mxb-ware</module>
+        <module>renren-fast</module>
     </modules>
 
 </project>

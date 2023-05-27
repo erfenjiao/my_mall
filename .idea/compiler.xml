@@ -7,19 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mxb-order" />
-        <module name="mxb-member" />
         <module name="renren-fast" />
         <module name="mxb-product" />
         <module name="mxb-coupon" />
         <module name="mxb-ware" />
-        <module name="renren-generator" />
+        <module name="mxb-order" />
+        <module name="mxb-member" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="demo" target="17" />
       <module name="gulimall-product" target="17" />
       <module name="mxbmall-common" target="18" />
+      <module name="renren-generator" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
