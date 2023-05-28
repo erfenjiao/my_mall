@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:28
  */
 @RestController
+@RequestMapping("product/categorybrandrelation")
 public class CategoryBrandRelationController {
     @Autowired
     private CategoryBrandRelationService categoryBrandRelationService;
@@ -32,7 +33,7 @@ public class CategoryBrandRelationController {
     /**
      * 列表
      */
-    @RequestMapping("/listCategoryBrandRelation")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = categoryBrandRelationService.queryPage(params);
 
@@ -43,7 +44,7 @@ public class CategoryBrandRelationController {
     /**
      * 信息
      */
-    @RequestMapping("/category/info/{id}")
+    @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		CategoryBrandRelationEntity categoryBrandRelation = categoryBrandRelationService.getById(id);
 
@@ -53,7 +54,7 @@ public class CategoryBrandRelationController {
     /**
      * 保存
      */
-    @RequestMapping("/saveCategoryBrandRelation")
+    @RequestMapping("/save")
     public R save(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
 		categoryBrandRelationService.save(categoryBrandRelation);
 
@@ -63,7 +64,7 @@ public class CategoryBrandRelationController {
     /**
      * 修改
      */
-    @RequestMapping("/updateCategoryBrandRelation")
+    @RequestMapping("/update")
     public R update(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
 		categoryBrandRelationService.updateById(categoryBrandRelation);
 
@@ -73,7 +74,7 @@ public class CategoryBrandRelationController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteCategoryBrandRelation")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		categoryBrandRelationService.removeByIds(Arrays.asList(ids));
 

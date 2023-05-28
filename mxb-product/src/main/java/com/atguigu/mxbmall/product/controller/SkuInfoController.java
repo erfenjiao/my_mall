@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:27
  */
 @RestController
+@RequestMapping("product/skuinfo")
 public class SkuInfoController {
     @Autowired
     private SkuInfoService skuInfoService;
@@ -32,7 +33,7 @@ public class SkuInfoController {
     /**
      * 列表
      */
-    @RequestMapping("/listSkuInfo")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = skuInfoService.queryPage(params);
 
@@ -43,7 +44,7 @@ public class SkuInfoController {
     /**
      * 信息
      */
-    @RequestMapping("/skuInfo/info/{skuId}")
+    @RequestMapping("/info/{skuId}")
     public R info(@PathVariable("skuId") Long skuId){
 		SkuInfoEntity skuInfo = skuInfoService.getById(skuId);
 
@@ -53,7 +54,7 @@ public class SkuInfoController {
     /**
      * 保存
      */
-    @RequestMapping("/saveSkuInfo")
+    @RequestMapping("/save")
     public R save(@RequestBody SkuInfoEntity skuInfo){
 		skuInfoService.save(skuInfo);
 
@@ -63,7 +64,7 @@ public class SkuInfoController {
     /**
      * 修改
      */
-    @RequestMapping("/updateSkuInfo")
+    @RequestMapping("/update")
     public R update(@RequestBody SkuInfoEntity skuInfo){
 		skuInfoService.updateById(skuInfo);
 
@@ -73,7 +74,7 @@ public class SkuInfoController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteSkuInfo")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] skuIds){
 		skuInfoService.removeByIds(Arrays.asList(skuIds));
 

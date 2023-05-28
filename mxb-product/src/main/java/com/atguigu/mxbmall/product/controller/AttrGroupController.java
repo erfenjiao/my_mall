@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:28
  */
 @RestController
+@RequestMapping("product/attrgroup")
 public class AttrGroupController {
     @Autowired
     private AttrGroupService attrGroupService;
@@ -32,7 +33,7 @@ public class AttrGroupController {
     /**
      * 列表
      */
-    @RequestMapping("/listAttrGroup")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrGroupService.queryPage(params);
 
@@ -53,7 +54,7 @@ public class AttrGroupController {
     /**
      * 保存
      */
-    @RequestMapping("/saveAttrGroup")
+    @RequestMapping("/save")
     public R save(@RequestBody AttrGroupEntity attrGroup){
 		attrGroupService.save(attrGroup);
 
@@ -63,7 +64,7 @@ public class AttrGroupController {
     /**
      * 修改
      */
-    @RequestMapping("/updateAttrGroup")
+    @RequestMapping("/update")
     public R update(@RequestBody AttrGroupEntity attrGroup){
 		attrGroupService.updateById(attrGroup);
 
@@ -73,7 +74,7 @@ public class AttrGroupController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteAttrGroup")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] attrGroupIds){
 		attrGroupService.removeByIds(Arrays.asList(attrGroupIds));
 

@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:27
  */
 @RestController
+@RequestMapping("product/skusaleattrvalue")
 public class SkuSaleAttrValueController {
     @Autowired
     private SkuSaleAttrValueService skuSaleAttrValueService;
@@ -32,7 +33,7 @@ public class SkuSaleAttrValueController {
     /**
      * 列表
      */
-    @RequestMapping("/listSkuSaleAttrValue")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = skuSaleAttrValueService.queryPage(params);
 
@@ -43,7 +44,7 @@ public class SkuSaleAttrValueController {
     /**
      * 信息
      */
-    @RequestMapping("/skuSaleAttrValue/info/{id}")
+    @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		SkuSaleAttrValueEntity skuSaleAttrValue = skuSaleAttrValueService.getById(id);
 
@@ -53,7 +54,7 @@ public class SkuSaleAttrValueController {
     /**
      * 保存
      */
-    @RequestMapping("/saveSkuSaleAttrValue")
+    @RequestMapping("/save")
     public R save(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue){
 		skuSaleAttrValueService.save(skuSaleAttrValue);
 
@@ -63,7 +64,7 @@ public class SkuSaleAttrValueController {
     /**
      * 修改
      */
-    @RequestMapping("/updateSkuSaleAttrValue")
+    @RequestMapping("/update")
     public R update(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue){
 		skuSaleAttrValueService.updateById(skuSaleAttrValue);
 
@@ -73,7 +74,7 @@ public class SkuSaleAttrValueController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteSkuSaleAttrValue")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		skuSaleAttrValueService.removeByIds(Arrays.asList(ids));
 

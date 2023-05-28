@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:28
  */
 @RestController
+@RequestMapping("product/commentreplay")
 public class CommentReplayController {
     @Autowired
     private CommentReplayService commentReplayService;
@@ -32,7 +33,7 @@ public class CommentReplayController {
     /**
      * 列表
      */
-    @RequestMapping("/listCommentReplay")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = commentReplayService.queryPage(params);
 
@@ -43,7 +44,7 @@ public class CommentReplayController {
     /**
      * 信息
      */
-    @RequestMapping("/comment/info/{id}")
+    @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		CommentReplayEntity commentReplay = commentReplayService.getById(id);
 
@@ -53,7 +54,7 @@ public class CommentReplayController {
     /**
      * 保存
      */
-    @RequestMapping("/saveCommentReplay")
+    @RequestMapping("/save")
     public R save(@RequestBody CommentReplayEntity commentReplay){
 		commentReplayService.save(commentReplay);
 
@@ -63,7 +64,7 @@ public class CommentReplayController {
     /**
      * 修改
      */
-    @RequestMapping("/updateCommentReplay")
+    @RequestMapping("/update")
     public R update(@RequestBody CommentReplayEntity commentReplay){
 		commentReplayService.updateById(commentReplay);
 
@@ -73,7 +74,7 @@ public class CommentReplayController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteCommentReplay")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		commentReplayService.removeByIds(Arrays.asList(ids));
 

@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:28
  */
 @RestController
+@RequestMapping("product/attrattrgrouprelation")
 public class AttrAttrgroupRelationController {
     @Autowired
     private AttrAttrgroupRelationService attrAttrgroupRelationService;
@@ -32,7 +33,7 @@ public class AttrAttrgroupRelationController {
     /**
      * 列表
      */
-    @RequestMapping("/listAttrGroupRelation")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrAttrgroupRelationService.queryPage(params);
 
@@ -43,7 +44,7 @@ public class AttrAttrgroupRelationController {
     /**
      * 信息
      */
-    @RequestMapping("/attr/info/{id}")
+    @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		AttrAttrgroupRelationEntity attrAttrgroupRelation = attrAttrgroupRelationService.getById(id);
 
@@ -53,7 +54,7 @@ public class AttrAttrgroupRelationController {
     /**
      * 保存
      */
-    @RequestMapping("/saveAttrGroupRelation")
+    @RequestMapping("/save")
     public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
 		attrAttrgroupRelationService.save(attrAttrgroupRelation);
 
@@ -63,7 +64,7 @@ public class AttrAttrgroupRelationController {
     /**
      * 修改
      */
-    @RequestMapping("/updateAttrGroupRelation")
+    @RequestMapping("/update")
     public R update(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
 		attrAttrgroupRelationService.updateById(attrAttrgroupRelation);
 
@@ -73,7 +74,7 @@ public class AttrAttrgroupRelationController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteAttrGroupRelation")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
 

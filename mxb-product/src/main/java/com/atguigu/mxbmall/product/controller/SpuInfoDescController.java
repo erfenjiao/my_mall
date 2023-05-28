@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:27
  */
 @RestController
+@RequestMapping("product/spuinfodesc")
 public class SpuInfoDescController {
     @Autowired
     private SpuInfoDescService spuInfoDescService;
@@ -32,7 +33,7 @@ public class SpuInfoDescController {
     /**
      * 列表
      */
-    @RequestMapping("/listSpuInfoDesc")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = spuInfoDescService.queryPage(params);
 
@@ -43,7 +44,7 @@ public class SpuInfoDescController {
     /**
      * 信息
      */
-    @RequestMapping("/spuInfoDesc/info/{spuId}")
+    @RequestMapping("/info/{spuId}")
     public R info(@PathVariable("spuId") Long spuId){
 		SpuInfoDescEntity spuInfoDesc = spuInfoDescService.getById(spuId);
 
@@ -53,7 +54,7 @@ public class SpuInfoDescController {
     /**
      * 保存
      */
-    @RequestMapping("/saveSpuInfoDesc")
+    @RequestMapping("/save")
     public R save(@RequestBody SpuInfoDescEntity spuInfoDesc){
 		spuInfoDescService.save(spuInfoDesc);
 
@@ -63,7 +64,7 @@ public class SpuInfoDescController {
     /**
      * 修改
      */
-    @RequestMapping("/updateSpuInfoDesc")
+    @RequestMapping("/update")
     public R update(@RequestBody SpuInfoDescEntity spuInfoDesc){
 		spuInfoDescService.updateById(spuInfoDesc);
 
@@ -73,7 +74,7 @@ public class SpuInfoDescController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteSpuInfoDesc")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] spuIds){
 		spuInfoDescService.removeByIds(Arrays.asList(spuIds));
 

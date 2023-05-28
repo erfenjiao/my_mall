@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:28
  */
 @RestController
+@RequestMapping("product/spucomment")
 public class SpuCommentController {
     @Autowired
     private SpuCommentService spuCommentService;
@@ -32,7 +33,7 @@ public class SpuCommentController {
     /**
      * 列表
      */
-    @RequestMapping("/listSpuComment")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = spuCommentService.queryPage(params);
 
@@ -43,7 +44,7 @@ public class SpuCommentController {
     /**
      * 信息
      */
-    @RequestMapping("/spuComment/info/{id}")
+    @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		SpuCommentEntity spuComment = spuCommentService.getById(id);
 
@@ -53,7 +54,7 @@ public class SpuCommentController {
     /**
      * 保存
      */
-    @RequestMapping("/saveSpuComment")
+    @RequestMapping("/save")
     public R save(@RequestBody SpuCommentEntity spuComment){
 		spuCommentService.save(spuComment);
 
@@ -63,7 +64,7 @@ public class SpuCommentController {
     /**
      * 修改
      */
-    @RequestMapping("/updateSpuComment")
+    @RequestMapping("/update")
     public R update(@RequestBody SpuCommentEntity spuComment){
 		spuCommentService.updateById(spuComment);
 

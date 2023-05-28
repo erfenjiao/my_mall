@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:28
  */
 @RestController
+@RequestMapping("product/brand")
 public class BrandController {
     @Autowired
     private BrandService brandService;
@@ -32,7 +33,7 @@ public class BrandController {
     /**
      * 列表
      */
-    @RequestMapping("/listBrand")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = brandService.queryPage(params);
 
@@ -53,7 +54,7 @@ public class BrandController {
     /**
      * 保存
      */
-    @RequestMapping("/saveBrand")
+    @RequestMapping("/save")
     public R save(@RequestBody BrandEntity brand){
 		brandService.save(brand);
 
@@ -63,7 +64,7 @@ public class BrandController {
     /**
      * 修改
      */
-    @RequestMapping("/updateBrand")
+    @RequestMapping("/update")
     public R update(@RequestBody BrandEntity brand){
 		brandService.updateById(brand);
 
@@ -73,7 +74,7 @@ public class BrandController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteBrand")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] brandIds){
 		brandService.removeByIds(Arrays.asList(brandIds));
 

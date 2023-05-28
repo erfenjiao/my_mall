@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    username: newuser
+    password: password
+    url: jdbc:mysql://localhost:3306/mxb_wms
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto   # 主键自增
+
+
+server:
+  port: 12000

@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:27
  */
 @RestController
+@RequestMapping("product/category")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
@@ -32,7 +33,7 @@ public class CategoryController {
     /**
      * 列表
      */
-    @RequestMapping("/listCategory")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = categoryService.queryPage(params);
 
@@ -53,7 +54,7 @@ public class CategoryController {
     /**
      * 保存
      */
-    @RequestMapping("/saveCategory")
+    @RequestMapping("/save")
     public R save(@RequestBody CategoryEntity category){
 		categoryService.save(category);
 
@@ -63,7 +64,7 @@ public class CategoryController {
     /**
      * 修改
      */
-    @RequestMapping("/updateCategory")
+    @RequestMapping("/update")
     public R update(@RequestBody CategoryEntity category){
 		categoryService.updateById(category);
 
@@ -73,7 +74,7 @@ public class CategoryController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteCategory")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] catIds){
 		categoryService.removeByIds(Arrays.asList(catIds));
 

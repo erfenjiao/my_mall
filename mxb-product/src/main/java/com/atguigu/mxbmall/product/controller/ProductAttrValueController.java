@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:28
  */
 @RestController
+@RequestMapping("product/productattrvalue")
 public class ProductAttrValueController {
     @Autowired
     private ProductAttrValueService productAttrValueService;
@@ -32,7 +33,7 @@ public class ProductAttrValueController {
     /**
      * 列表
      */
-    @RequestMapping("/listProductAttrValue")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = productAttrValueService.queryPage(params);
 
@@ -43,7 +44,7 @@ public class ProductAttrValueController {
     /**
      * 信息
      */
-    @RequestMapping("/product/info/{id}")
+    @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		ProductAttrValueEntity productAttrValue = productAttrValueService.getById(id);
 
@@ -53,7 +54,7 @@ public class ProductAttrValueController {
     /**
      * 保存
      */
-    @RequestMapping("/saveProductAttrValue")
+    @RequestMapping("/save")
     public R save(@RequestBody ProductAttrValueEntity productAttrValue){
 		productAttrValueService.save(productAttrValue);
 
@@ -63,7 +64,7 @@ public class ProductAttrValueController {
     /**
      * 修改
      */
-    @RequestMapping("/updateProductAttrValue")
+    @RequestMapping("/update")
     public R update(@RequestBody ProductAttrValueEntity productAttrValue){
 		productAttrValueService.updateById(productAttrValue);
 
@@ -73,7 +74,7 @@ public class ProductAttrValueController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteProductAttrValue")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		productAttrValueService.removeByIds(Arrays.asList(ids));
 

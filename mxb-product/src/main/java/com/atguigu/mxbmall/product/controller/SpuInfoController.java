@@ -22,9 +22,10 @@ import com.atguigu.common.utils.R;
  *
  * @author erfenjiao
  * @email gyf2002cc@gmail.com
- * @date 2023-05-27 21:57:28
+ * @date 2023-05-28 10:38:28
  */
 @RestController
+@RequestMapping("product/spuinfo")
 public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
@@ -32,7 +33,7 @@ public class SpuInfoController {
     /**
      * 列表
      */
-    @RequestMapping("/listSpuInfo")
+    @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = spuInfoService.queryPage(params);
 
@@ -43,7 +44,7 @@ public class SpuInfoController {
     /**
      * 信息
      */
-    @RequestMapping("/spuInfo/info/{id}")
+    @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
 		SpuInfoEntity spuInfo = spuInfoService.getById(id);
 
@@ -53,7 +54,7 @@ public class SpuInfoController {
     /**
      * 保存
      */
-    @RequestMapping("/saveSpuInfo")
+    @RequestMapping("/save")
     public R save(@RequestBody SpuInfoEntity spuInfo){
 		spuInfoService.save(spuInfo);
 
@@ -63,7 +64,7 @@ public class SpuInfoController {
     /**
      * 修改
      */
-    @RequestMapping("/updateSpuInfo")
+    @RequestMapping("/update")
     public R update(@RequestBody SpuInfoEntity spuInfo){
 		spuInfoService.updateById(spuInfo);
 
@@ -73,7 +74,7 @@ public class SpuInfoController {
     /**
      * 删除
      */
-    @RequestMapping("/deleteSpuInfo")
+    @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
 		spuInfoService.removeByIds(Arrays.asList(ids));
 
