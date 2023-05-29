@@ -11,9 +11,9 @@
         <module name="mxb-member" />
         <module name="mxbmall-common" />
         <module name="renren-fast" />
-        <module name="mxb-product" />
         <module name="mxb-coupon" />
         <module name="mxb-ware" />
+        <module name="mxb-product" />
         <module name="renren-generator" />
       </profile>
     </annotationProcessing>

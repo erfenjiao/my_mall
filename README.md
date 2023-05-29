@@ -4,60 +4,14 @@ p12 配置maven jdk
 p13 14 项目结构构建 微服务模块
 p15 数据库初始化
 p16 17 18 19 生成代码并测试
+p20 微服务-注册中心(Nacos)、配置中心(Nacos)、
+    API网关(Gateway)、
+    负载均衡(Ribbon)、 
+    声明式HTTP客户端（调用远程服务-Feign）、
+    服务容错（限流、降级、熔断-Sentinal）、
+    调用链监控(Sleuth)、
+    分布式事务(Seata)
+    
 
 
 
-
-## 一些问题解决方法记录
-### 1 
-java: 找不到符号
-符号: 方法 setOperation(java.lang.String)
-解决：把lombok.version的版本调高了之后就可以了 调到1.18.20
-### 2 数据库连接
-为了创建一个非特权用户并授予其所需的权限，您可以按照以下步骤进行操作：
-
-1. 以root用户身份登录到MySQL数据库中。
-
-2. 创建一个新用户（假设用户名为newuser）并分配密码：
-
-   ```
-   CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
-   ```
-
-   其中，localhost表示该用户只能从本地连接到MySQL服务器。如果您希望该用户能够从任意主机连接到MySQL服务器，则应将localhost替换为%。
-
-3. 授予该用户所需的数据库访问权限：
-
-   ```
-   GRANT ALL PRIVILEGES ON dbname.* TO 'newuser'@'localhost';
-   ```
-
-   其中，dbname是您要授权给该用户的数据库名称。ALL PRIVILEGES表示该用户将获得该数据库的所有权限。
-
-4. 刷新MySQL权限表以使更改生效：
-
-   ```
-   FLUSH PRIVILEGES;
-   ```
-
-5. 然后，您可以使用新用户的凭据进行数据库连接。
-
-   ```
-   mysql -u newuser -p
-   ```
-
-   然后输入密码即可登录到新用户的账户中。
-
-请注意，为了提高系统的安全性，建议不要将密码直接存储在配置文件中，而是使用环境变量或其他加密措施来存储密码。
-
-### 3 ppom.xml的依赖问题
-问题：parent.relativePath' of POM io.renren:renren-fast:3.0.0 (/home/erfenjiao/my_mall/renren-fast/pom.xml) points at com.atguigu.mxbmall:mxb instead of org.springframework.boot:spring-boot-starter-parent, please verify your project structure
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.6</version>
-		<relativePath ></relativePath>
-	</parent>
-
-### 4 pom.xml的依赖版本爆红
-右键本目录的Maven,Reload一下

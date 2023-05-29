@@ -1,4 +1,4 @@
-package com.atguigu.mxbmall.order;
+package com.atguigu.mxbmall.product;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class MxbOrderApplication {
+public class MxbProductApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MxbOrderApplication.class, args);
+        SpringApplication.run(MxbProductApplication.class, args);
     }
 
 }

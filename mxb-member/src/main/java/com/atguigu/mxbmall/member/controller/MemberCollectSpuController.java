@@ -3,6 +3,8 @@ package com.atguigu.mxbmall.member.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.atguigu.mxbmall.member.entity.MemberEntity;
+import com.atguigu.mxbmall.member.feign.CouponFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
