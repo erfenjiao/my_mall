@@ -60,11 +60,12 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         List<CategoryEntity> children = all.stream()
                 .filter(CategoryEntity -> CategoryEntity.getParentCid().equals(root.getCatId()))
                 .map(categoryEntity -> {
-                    //递归查找
+                    //递归查找子菜单         当前菜单 categoryEntity
                     categoryEntity.setChildren(getChildren(categoryEntity, all));
                     return categoryEntity;
                 })
                 .sorted((menu1, menu2) -> {
+                    //菜单排序 有可能空指针异常，添加条件判断
                     return (menu1.getSort() == null ? 0 : menu1.getSort()) - (menu2.getSort() == null ? 0 : menu2.getSort());
                 })
                 .collect(Collectors.toList());
