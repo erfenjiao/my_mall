@@ -20,6 +20,13 @@ spring:
           predicates:
             - Query=url,qq
 
+        - id: product_route
+          uri: lb://mxbmall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
         - id: admin_route
           uri: lb://renren-fast
           predicates:
@@ -27,13 +34,9 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
 
-        - id: producr_route
-          uri: lb://mxbmall-product
-          predicates:
-            - Path=/api/product/**
-          filters:
-            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
 ## 前端項目：api
 ## http://localhost:8888/api/captcha.jpg?uuid=91fc4678-3475-4f08-8
 ## 默ren ：localhost:8080/renren-fast/captcha.jpg - 需要重写路径
-
+server:
+  port: 8888
