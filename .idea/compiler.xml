@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mxb-gateway" />
         <module name="mxb-order" />
         <module name="mxb-member" />
         <module name="mxbmall-common" />
@@ -27,6 +28,7 @@
       <module name="demo" options="-parameters" />
       <module name="gulimall-product" options="-parameters" />
       <module name="mxb-coupon" options="-parameters" />
+      <module name="mxb-gateway" options="-parameters" />
       <module name="mxb-member" options="-parameters" />
       <module name="mxb-order" options="-parameters" />
       <module name="mxb-product" options="-parameters" />

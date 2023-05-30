@@ -11,6 +11,10 @@ p20 微服务-注册中心(Nacos)、配置中心(Nacos)、
     服务容错（限流、降级、熔断-Sentinal）、
     调用链监控(Sleuth)、
     分布式事务(Seata)
+p21 nacos
+p22 OpenFeign测试调用
+p23 nacos 配置中心
+p24 nacos 配置中心 - 命名空间(作用：配置隔离)、配置集、配置集ID、配置分组
     
 
 
