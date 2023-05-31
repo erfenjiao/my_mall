@@ -59,25 +59,25 @@ public class BrandController {
      * @Valid 开启校验功能
      */
     @RequestMapping("/save")
-    public R save(@Valid @RequestBody BrandEntity brand, BindingResult result){
-//		brandService.save(brand);
-//
-//        return R.ok();
-            if (result.hasErrors()){
-                Map<String, String> map = new HashMap<>();
-                //1、获取校验的结果
-                result.getFieldErrors().forEach((item)->{
-                    //获取到错误提示
-                    String message = item.getDefaultMessage();
-                    //获取到错误属性的名字
-                    String field = item.getField();
-                    map.put(field, message);
-                });
-                return R.error().put("data", map);
-            }else{
-                brandService.save(brand);
-            }
-            return R.ok();
+    public R save(@Valid @RequestBody BrandEntity brand/*BindingResult result*/){
+		brandService.save(brand);
+
+        return R.ok();
+//            if (result.hasErrors()){
+//                Map<String, String> map = new HashMap<>();
+//                //1、获取校验的结果
+//                result.getFieldErrors().forEach((item)->{
+//                    //获取到错误提示
+//                    String message = item.getDefaultMessage();
+//                    //获取到错误属性的名字
+//                    String field = item.getField();
+//                    map.put(field, message);
+//                });
+//                return R.error().put("data", map);
+//            }else{
+//                brandService.save(brand);
+//            }
+//            return R.ok();
     }
 
     /**
