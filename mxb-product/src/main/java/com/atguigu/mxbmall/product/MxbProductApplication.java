@@ -13,6 +13,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *  1） 配置统一的全局规则（可以省略）
  *  2）配置逻辑删除组件（3.1.1开始不需要这一步）
  *  3）实体类字段上加上@TableLogic(value = "1", delval = "0")注解，三级分类把showStatus字段作为逻辑删除字段
+ *
+ *  3 JSR303表单验证-数据校验
+ *      1)、给 Bean 添加校验注解 package javax.validation.constraints; 并定义自己的message提示
+ *      2)、SpringMVC提交数据 -> controller 在需要校验的方法上添加@Valid注解，并返回提示信息
  */
 
 @EnableDiscoveryClient
