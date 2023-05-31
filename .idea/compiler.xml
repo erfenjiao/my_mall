@@ -12,6 +12,7 @@
         <module name="mxb-member" />
         <module name="mxbmall-common" />
         <module name="renren-fast" />
+        <module name="mxbmall-third-party" />
         <module name="mxb-coupon" />
         <module name="mxb-ware" />
         <module name="mxb-product" />
@@ -21,6 +22,7 @@
     <bytecodeTargetLevel>
       <module name="demo" target="17" />
       <module name="gulimall-product" target="17" />
+      <module name="mxbmall" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -33,6 +35,8 @@
       <module name="mxb-order" options="-parameters" />
       <module name="mxb-product" options="-parameters" />
       <module name="mxb-ware" options="-parameters" />
+      <module name="mxbmall" options="-parameters" />
+      <module name="mxbmall-third-party" options="-parameters" />
       <module name="renren-fast" options="-parameters" />
       <module name="renren-generator" options="-parameters" />
     </option>

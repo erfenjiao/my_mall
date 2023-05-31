@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: mxbmall-third-party
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 9c085920-3d5b-490b-8bb1-a39e346a0c41
+        extension-configs[0]:
+          data-id: oss.yaml
+          group: DEFAULT_GROUP
+          refresh: true
