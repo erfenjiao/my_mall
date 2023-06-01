@@ -40,4 +40,4 @@ build/
 
 **/.gitignore
 
-**/src/main/resource/application.yml
+mxb-product/src/main/resource/application.yml
