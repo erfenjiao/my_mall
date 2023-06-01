@@ -106,6 +106,7 @@
   export default {
     data () {
       return {
+        catId: 0,
         dataForm: {
           key: ''
         },
@@ -132,7 +133,7 @@
       getDataList () {
         this.dataListLoading = true
         this.$http({
-          url: this.$http.adornUrl('/product/attrgroup/list'),
+          url: this.$http.adornUrl('/product/attrgroup/list/${this.catId}'),
           method: 'get',
           params: this.$http.adornParams({
             'page': this.pageIndex,
@@ -156,6 +157,11 @@
           console.log("attrgroup感知到category的节点被点击：",data, node, component);
           console.log("刚才被点击的菜单id", data.catId);
           console.log("刚才被点击的菜单名字", data.name);
+          //必须是三级分类，才显示属性
+          if (data.catLevel == 3){
+              this.catId = data.catId;
+              this.getDataList();
+          }
       },
 
       // 每页数
