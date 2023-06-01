@@ -1,4 +1,13 @@
+<!-- 
+  gutter 每一列的间隔 
+  span="6" 树形菜单
+-->
 <template>
+  <el-row :gutter="20">  
+    <el-col :span="6">
+      <category @tree-node-click="treenodeclick"></category>
+    </el-col>
+    <el-col :span="18">
   <div class="mod-config">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
@@ -79,16 +88,21 @@
       :total="totalPage"
       layout="total, sizes, prev, pager, next, jumper">
     </el-pagination>
-    <!-- 弹窗, 新增 / 修改 -->
+    <!-- 弹窗, 新增 / 修改 add-or-update：引入一个弹窗-->
     <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getDataList"></add-or-update>
   </div>
+</el-col>
+</el-row>
 </template>
 
 <script>
 /**
- * 父子组件通信
+ * 父子组件通信、传递数据 
+ *  1）、子组件给父组件传递数据 事件机制
+ *       子组件给父组件发送一个事件，携带上数据
  */
   import AddOrUpdate from './attrgroup-add-or-update'  //从这里导入组件
+  import category from '../common/category'
   export default {
     data () {
       return {
@@ -104,12 +118,15 @@
         addOrUpdateVisible: false
       }
     },
-    components: {
-      AddOrUpdate  // 注册进来
+
+    components: {  // 注册进来才能使用  category作为标签名直接使用
+      AddOrUpdate  , category
     },
+
     activated () {
       this.getDataList()
     },
+
     methods: {
       // 获取数据列表
       getDataList () {
@@ -133,21 +150,32 @@
           this.dataListLoading = false
         })
       },
+
+      // attrgroup感知到category的节点被点击
+      treenodeclick(data, node, component){
+          console.log("attrgroup感知到category的节点被点击：",data, node, component);
+          console.log("刚才被点击的菜单id", data.catId);
+          console.log("刚才被点击的菜单名字", data.name);
+      },
+
       // 每页数
       sizeChangeHandle (val) {
         this.pageSize = val
         this.pageIndex = 1
         this.getDataList()
       },
+
       // 当前页
       currentChangeHandle (val) {
         this.pageIndex = val
         this.getDataList()
       },
+
       // 多选
       selectionChangeHandle (val) {
         this.dataListSelections = val
       },
+
       // 新增 / 修改
       addOrUpdateHandle (id) {
         this.addOrUpdateVisible = true
@@ -155,6 +183,7 @@
           this.$refs.addOrUpdate.init(id)
         })
       },
+
       // 删除
       deleteHandle (id) {
         var ids = id ? [id] : this.dataListSelections.map(item => {
@@ -172,12 +201,12 @@
           }).then(({data}) => {
             if (data && data.code === 0) {
               this.$message({
-                message: '操作成功',
-                type: 'success',
-                duration: 1500,
-                onClose: () => {
-                  this.getDataList()
-                }
+                  message: '操作成功',
+                  type: 'success',
+                  duration: 1500,
+                  onClose: () => {
+                    this.getDataList()
+                  }
               })
             } else {
               this.$message.error(data.msg)

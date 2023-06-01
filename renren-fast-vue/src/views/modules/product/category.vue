@@ -1,6 +1,7 @@
 <!--  -->
 <template>
     <div>
+    <!-- 菜单数据赋值给menus -->
     <el-tree :data="menus" show-checkbox node-key="catId"                 
         :props="defaultProps" @node-click="handleNodeClick" 
         :expand-on-click-node="false"

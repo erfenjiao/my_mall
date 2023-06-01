@@ -12,7 +12,12 @@
       ></el-tree>
     </div>
   </template>
-  
+  <!-- 
+    node-click 被点击时回调，回调会触发 methods 中定义的方法
+    node-key="catId" 区分节点
+  -->
+
+
   <script>
   //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
   //例如：import 《组件名称》 from '《组件路径》';
@@ -25,10 +30,10 @@
       //这里存放数据
       return {
         filterText: "",
-        menus: [],
-        expandedKey: [],
+        menus: [],          // 绑定所有菜单数据
+        expandedKey: [],    // 菜单默认设置
         defaultProps: {
-          children: "children",
+          children: "children",  //子结点
           label: "name"
         }
       };
@@ -48,24 +53,30 @@
         if (!value) return true;
         return data.name.indexOf(value) !== -1;
       },
+
       getMenus() {
         this.$http({
           url: this.$http.adornUrl("/product/category/list/tree"),
           method: "get"
         }).then(({ data }) => {
-          this.menus = data.data;
+          this.menus = data.data;  // 将菜单数据绑定给 menus， <template> <el-tree></el-tree> 自动展示
         });
       },
+
+      // nodeclick 有三个参数，依次为：传递给data属性的数组中该结点所对应的对象、结点对应的Node、节点组件本身
       nodeclick(data, node, component) {
-        console.log("子组件category的节点被点击", data, node, component);
-        //向父组件发送事件；
+        console.log("子组件 category 的节点被点击", data, node, component);
+        //向父组件发送事件；让 attrgroup 知道
         this.$emit("tree-node-click", data, node, component);
       }
     },
+
+
     //生命周期 - 创建完成（可以访问当前this实例）
     created() {
       this.getMenus();
     },
+
     //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {},
     beforeCreate() {}, //生命周期 - 创建之前
