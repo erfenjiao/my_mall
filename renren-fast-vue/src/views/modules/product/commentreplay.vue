@@ -67,7 +67,7 @@
 </template>
 
 <script>
-  import AddOrUpdate from './commentreplay-add-or-update'
+  import AddOrUpdate from './commentreplay-add-or-update.vue'
   export default {
     data () {
       return {

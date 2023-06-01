@@ -1,7 +1,10 @@
 package com.atguigu.mxbmall.product.service.impl;
 
+import com.atguigu.mxbmall.product.service.CategoryBrandRelationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,6 +18,7 @@ import com.atguigu.common.utils.Query;
 import com.atguigu.mxbmall.product.dao.CategoryDao;
 import com.atguigu.mxbmall.product.entity.CategoryEntity;
 import com.atguigu.mxbmall.product.service.CategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("categoryService")
@@ -64,7 +68,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
      * @param all  所有菜单
      * @return
      */
-    private List<CategoryEntity> getChildren(CategoryEntity root, List<CategoryEntity> all){
+    public List<CategoryEntity> getChildren(CategoryEntity root, List<CategoryEntity> all){
         List<CategoryEntity> children = all.stream()
                 .filter(CategoryEntity -> CategoryEntity.getParentCid().equals(root.getCatId()))
                 .map(categoryEntity -> {
@@ -78,6 +82,37 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                 })
                 .collect(Collectors.toList());
         return children;
+    }
+
+    //categoryServiceImpl实现方法
+    //查找完整路径方法
+    @Override
+    public Long[] findCatelogPath(Long catelogId) {
+        List<Long> paths = new ArrayList<>();
+        List<Long> parentPath = findParentPath(catelogId, paths);
+        return parentPath.toArray(new Long[parentPath.size()]);
+    }
+
+    //递归查找父节点id 225，25,5
+    public List<Long> findParentPath(Long catelogId,List<Long> paths){
+        //1、收集当前节点id
+        CategoryEntity byId = this.getById(catelogId);
+        if (byId.getParentCid() != 0){
+            findParentPath(byId.getParentCid(), paths);
+        }
+        //1、收集当前节点id
+        paths.add(catelogId);
+        return paths;
+    }
+
+    @Autowired
+    CategoryBrandRelationService categoryBrandRelationService;
+
+    @Transactional
+    @Override
+    public void updateCascade(CategoryEntity category) {
+        this.updateById(category);
+        categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
     }
 
 }

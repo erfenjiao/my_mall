@@ -1,5 +1,10 @@
 package com.atguigu.mxbmall.product.service.impl;
 
+import com.atguigu.mxbmall.product.dao.BrandDao;
+import com.atguigu.mxbmall.product.dao.CategoryDao;
+import com.atguigu.mxbmall.product.entity.BrandEntity;
+import com.atguigu.mxbmall.product.entity.CategoryEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -25,5 +30,38 @@ public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandR
 
         return new PageUtils(page);
     }
+    @Autowired
+    CategoryDao categoryDao;
+
+    @Autowired
+    BrandDao brandDao;
+
+    @Override
+    public void saveDetail(CategoryBrandRelationEntity categoryBrandRelation) {
+        Long brandId = categoryBrandRelation.getBrandId();
+        Long catelogId = categoryBrandRelation.getCatelogId();
+        //查询详细名字和分类名字
+        BrandEntity brandEntity = brandDao.selectById(brandId);
+        CategoryEntity categoryEntity = categoryDao.selectById(catelogId);
+        categoryBrandRelation.setBrandName(brandEntity.getName());
+        categoryBrandRelation.setCatelogName(categoryEntity.getName());
+        this.save(categoryBrandRelation);
+
+    }
+
+    @Override
+    public void updateBrand(Long brandId, String name) {
+        CategoryBrandRelationEntity categoryBrandRelationEntity = new CategoryBrandRelationEntity();
+        categoryBrandRelationEntity.setBrandName(name);
+        categoryBrandRelationEntity.setBrandId(brandId);
+        this.update(categoryBrandRelationEntity, new QueryWrapper<CategoryBrandRelationEntity>().eq("brand_id", brandId));
+    }
+
+    @Override
+    public void updateCategory(Long catId, String name) {
+        this.baseMapper.updateCategroy(catId, name);
+    }
 
 }
+
+

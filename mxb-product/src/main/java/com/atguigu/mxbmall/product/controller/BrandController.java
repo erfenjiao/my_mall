@@ -62,24 +62,10 @@ public class BrandController {
      */
     @RequestMapping("/save")
     public R save(@Validated(AddGroup.class) @RequestBody BrandEntity brand/*BindingResult result*/){
-		brandService.save(brand);
+		//brandService.save(brand);
+        brandService.updateByIdDetail(brand);
 
         return R.ok();
-//            if (result.hasErrors()){
-//                Map<String, String> map = new HashMap<>();
-//                //1、获取校验的结果
-//                result.getFieldErrors().forEach((item)->{
-//                    //获取到错误提示
-//                    String message = item.getDefaultMessage();
-//                    //获取到错误属性的名字
-//                    String field = item.getField();
-//                    map.put(field, message);
-//                });
-//                return R.error().put("data", map);
-//            }else{
-//                brandService.save(brand);
-//            }
-//            return R.ok();
     }
 
     /**

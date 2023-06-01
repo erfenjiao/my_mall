@@ -33,9 +33,10 @@ public class CategoryController {
 
     /**
      * 列表 查出所有分类以及子分类，以树形结构组装起来
+     * @RequestParam Map<String, Object> params
      */
     @RequestMapping("/list/tree")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(){
 //        PageUtils page = categoryService.queryPage(params);
 
         List<CategoryEntity> entities = categoryService.listWithTree();
@@ -69,7 +70,8 @@ public class CategoryController {
      */
     @RequestMapping("/update")
     public R update(@RequestBody CategoryEntity category){
-		categoryService.updateById(category);
+		//categoryService.updateById(category);
+        categoryService.updateCascade(category);
 
         return R.ok();
     }
