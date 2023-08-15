@@ -41,8 +41,8 @@ public class CategoryBrandRelationController {
     /**
      * 获取当前品牌关联的所有分类列表
      */
-    @RequestMapping(value = "/catelog/list", method = RequestMethod.GET)
-    @GetMapping
+    //@RequestMapping(value = "/catelog/list", method = RequestMethod.GET)
+    @GetMapping("/catelog/list")
     public R catelogList(@RequestParam("brandId") Long brandId){
         List<CategoryBrandRelationEntity> data = categoryBrandRelationService.list(
                 new QueryWrapper<CategoryBrandRelationEntity>().eq("brand_id", brandId)
@@ -65,9 +65,9 @@ public class CategoryBrandRelationController {
 
     /**
      * 保存
+     * //@RequiresPermissions("product:categorybrandrelation:save")
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("product:categorybrandrelation:save")
     public R save(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
         categoryBrandRelationService.saveDetail(categoryBrandRelation);
 

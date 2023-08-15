@@ -52,6 +52,7 @@ public class AttrGroupController {
     }
 
     /**
+     * 新增关联关系
      * /product/attrgroup/attr/relation
      * @param vos
      * @return
@@ -65,6 +66,15 @@ public class AttrGroupController {
 
     /**
      * 列表
+     * 路径变量： catelogId  标注：@PathVariable
+     * 分页请求参数：
+     * {
+     *    page: 1,           //当前页码
+     *    limit: 10,         //每页记录数
+     *    sidx: 'id',        //排序字段
+     *    order: 'asc/desc', //排序方式
+     *    key: '华为'         //检索关键字
+     * }
      */
     @RequestMapping("/list/{catelogId}")
     public R list(@RequestParam Map<String, Object> params, @PathVariable("catelogId") Long catelogId){
@@ -77,7 +87,7 @@ public class AttrGroupController {
 
 
     /**
-     * 信息
+     * 信息 根据id查询完整路径
      */
     @RequestMapping("/info/{attrGroupId}")
     public R info(@PathVariable("attrGroupId") Long attrGroupId){
@@ -88,7 +98,6 @@ public class AttrGroupController {
         Long[] path = categoryService.findCatelogPath(catelogId);
 
         attrGroup.setCatelogPath(path);
-
 
         return R.ok().put("attrGroup", attrGroup);
     }
@@ -123,12 +132,18 @@ public class AttrGroupController {
         return R.ok();
     }
 
+    /**
+     * 删除属性分组的关联的所有属性
+     */
     @PostMapping("/attr/relation/delete")
     public R attrRelationDelete(@RequestBody AttrGroupRelationVo[] vos){
         attrService.deleteRelation(vos);
         return R.ok();
     }
 
+    /**
+     * 获取属性分组的关联的所有属性
+     */
     @GetMapping("/{attrgroupId}/noattr/relation")
     public R attrNoRelation(@PathVariable("attrgroupId") Long attrgroupId, @RequestParam Map<String, Object> params){
         PageUtils page = attrService.getNoRelationAttr(params, attrgroupId);

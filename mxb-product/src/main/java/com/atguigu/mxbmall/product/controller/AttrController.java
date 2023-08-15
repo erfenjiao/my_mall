@@ -27,7 +27,14 @@ import com.atguigu.common.utils.R;
 public class AttrController {
     @Autowired
     private AttrService attrService;
+
     /**
+     * 查询规格参数
+     * catelogId：点击分类，就带上分类Id
+     * attrType： 0-销售属性 1-规格参数
+     * 还需要模糊查询功能
+
+
      *  获取基础属性
      *  /product/attr/base/list/{catelogId}
      *  //@GetMapping("/base/list/{catelogId}")
@@ -35,7 +42,6 @@ public class AttrController {
      *  获取销售属性
      *  /product/attr/sale/list/{catelogId}
      */
-
     @RequestMapping("/{attrType}/list/{catelogId}")
     public R baseList(@RequestParam Map<String, Object> params,
                       @PathVariable("catelogId") Long catelogId,
@@ -57,7 +63,8 @@ public class AttrController {
 
 
     /**
-     * 信息
+     * 在级联菜单的修改功能中，在所属分类中需要回显当前分类的完整路径
+     * 查询属性详情功能
      */
     @RequestMapping("/info/{attrId}")
     public R info(@PathVariable("attrId") Long attrId){
@@ -69,12 +76,8 @@ public class AttrController {
 
     /**
      * 保存
-     *    @RequestMapping("/save")
-     *     public R save(@RequestBody AttrEntity attr){
-     * 		attrService.save(attr);
-     *
-     *         return R.ok();
-     *     }
+     * 基本保存： attrService.save(attr);
+
      */
     @RequestMapping("/save")
     public R save(@RequestBody AttrVo attr){
@@ -85,6 +88,7 @@ public class AttrController {
 
 
     /**
+     * 在级联菜单的修改功能中，修改原先的属性，就会发送update请求
      * 修改
      */
     @RequestMapping("/update")

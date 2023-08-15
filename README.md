@@ -15,6 +15,10 @@ p21 nacos
 p22 OpenFeign测试调用
 p23 nacos 配置中心
 p24 nacos 配置中心 - 命名空间(作用：配置隔离)、配置集、配置集ID、配置分组
+## 启动过程
+1. 开启nacos ./startup.sh 登陆网页：http://127.0.0.1:8848/nacos/
+2. 后台管理系统的前端：renren-fast-vue ，执行命令：npm run dev
+3. 开启网关MxbGatewayApplication 第三方服务MxbmallThirdPartyApplication 
     
 
 

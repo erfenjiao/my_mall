@@ -60,7 +60,6 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
      * 关联关系DAO
      * pms_attr_attrgroup_relation(colums:attr_id attr_group_id attr_sort)
      */
-
     @Transactional
     @Override
     public void saveAttr(AttrVo attr) {
@@ -71,7 +70,8 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         // 保存基本数据
         this.save(attrEntity);
         // 保存关联关系 - 保存AttrGroupId信息
-        if(attr.getAttrType() == ProductConstant.AttrEnum.ATTR_TYPE_BASE.getCode() && attr.getAttrGroupId() != null) { //是基础类型才需要保存
+        // 是基础类型才需要保存
+        if(attr.getAttrType() == ProductConstant.AttrEnum.ATTR_TYPE_BASE.getCode() && attr.getAttrGroupId() != null) {
             AttrAttrgroupRelationEntity relationEntity = new AttrAttrgroupRelationEntity();
             relationEntity.setAttrGroupId(attr.getAttrGroupId());  //属性分组ID
             relationEntity.setAttrId(attrEntity.getAttrId());      //属性ID
@@ -80,9 +80,17 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
 
     }
 
+    /**
+     * 查询规格参数
+     * catelogId：点击分类，就带上分类Id
+     * 还需要模糊查询功能
+     */
     @Override
     public PageUtils queryBaseAttrPage(Map<String, Object> params, Long catelogId, String type){
-        QueryWrapper<AttrEntity> queryWrapper = new QueryWrapper<AttrEntity>().eq("attr_type", "base".equalsIgnoreCase(type)?ProductConstant.AttrEnum.ATTR_TYPE_BASE.getCode():ProductConstant.AttrEnum.ATTR_TYPE_SALE.getCode());
+        QueryWrapper<AttrEntity> queryWrapper
+                = new QueryWrapper<AttrEntity>()
+                .eq("attr_type", "base".equalsIgnoreCase(type)?ProductConstant.AttrEnum.ATTR_TYPE_BASE.getCode():ProductConstant.AttrEnum.ATTR_TYPE_SALE.getCode());
+       // QueryWrapper<AttrEntity> queryWrapper = new QueryWrapper<AttrEntity>().eq("attr_type", "base".equalsIgnoreCase(attrType)?1:0);
         /**
          * 根据不同情况封装不同条件
          * 第一种情况 catelogId == 0,查询所有 ; != 0 ，拼条件：若catelogId等于指定的值，就查询
@@ -95,7 +103,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
             // attr_id attr_name
             queryWrapper.and((wrapper)->{
                 wrapper.eq("attr_id", key).or().like("attr_like", key);
-            });
+            }); 
         }
         /**
          * 使用 this.page 方法将分页条件 params 封装成 IPage 参数，如下：
@@ -121,7 +129,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
              *    attrRespVo 设置分类和分组的名字
              *    1 分组的组名查询 按照属性id - attr_id 查出分组id
              *    pms_attr_attrgroup_relation(colums:attr_id attr_group_id attr_sort)
-             *    2 如果是销售属性，是不存在分组的
+             *    2 如果是销售属性，是不存在分组的，所以需要 if 判断
              */
             if ("base".equalsIgnoreCase(type)){
                 AttrAttrgroupRelationEntity attrId = attrAttrgroupRelationDao.selectOne(new QueryWrapper<AttrAttrgroupRelationEntity>().eq("attr_id", attrEntity.getAttrId()));
@@ -147,6 +155,10 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         return pageUtils;
     }
 
+    /**
+     * 在级联菜单的修改功能中，在所属分类中需要回显当前分类的完整路径
+     * 查询属性详情功能
+     */
     @Override
     public AttrRespVo getAttrInfo(Long attrId) {
         // 查出当当前属性的详细信息
@@ -156,8 +168,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
 
         if(attrEntity.getAttrType() == ProductConstant.AttrEnum.ATTR_TYPE_BASE.getCode()){
             /**
-             *  1 设置分组信息
-             *  分组Id
+             *  1 设置分组信息 分组Id
              */
             AttrAttrgroupRelationEntity attrAttrgroupRelationEntity = attrAttrgroupRelationDao.selectOne(new QueryWrapper<AttrAttrgroupRelationEntity>().eq("attr_id", attrId));
             if(attrAttrgroupRelationEntity != null) {
@@ -169,8 +180,6 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
                 }
             }
         }
-
-
 
         /**
          *  2 设置分类信息

@@ -84,8 +84,12 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return children;
     }
 
-    //categoryServiceImpl实现方法
-    //查找完整路径方法
+    /**
+     * categoryServiceImpl实现方法
+     * 查找完整路径方法
+     * @param catelogId
+     * @return
+     */
     @Override
     public Long[] findCatelogPath(Long catelogId) {
         List<Long> paths = new ArrayList<>();

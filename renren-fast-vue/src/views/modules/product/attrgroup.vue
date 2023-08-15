@@ -112,13 +112,6 @@ export default {
     this.getDataList();
   },
   methods: {
-    //处理分组与属性的关联
-    relationHandle(groupId) {
-      this.relationVisible = true;
-      this.$nextTick(() => {
-        this.$refs.relationUpdate.init(groupId);
-      });
-    },
     //感知树节点被点击
     treenodeclick(data, node, component) {
       if (node.level == 3) {
@@ -126,6 +119,15 @@ export default {
         this.getDataList(); //重新查询
       }
     },
+
+    //处理分组与属性的关联
+    relationHandle(groupId) {
+      this.relationVisible = true;
+      this.$nextTick(() => {
+        this.$refs.relationUpdate.init(groupId);
+      });
+    },
+
     getAllDataList(){
       this.catId = 0;
       this.getDataList();
@@ -169,7 +171,10 @@ export default {
     },
     // 新增 / 修改
     addOrUpdateHandle(id) {
+      // true：显示弹窗
       this.addOrUpdateVisible = true;
+      // 上面的组件完全渲染后调用 
+      // this：当前attrgroup组件 refs:当前组件的所有组件
       this.$nextTick(() => {
         this.$refs.addOrUpdate.init(id);
       });
